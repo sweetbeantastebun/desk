@@ -1,29 +1,11 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 # -*- coding: utf-8 -*-
-
-
-# In[2]:
-
-
 import numpy as np  #配列計算、FFT化するライブラリ
 import wave     #wavファイルの読み書きするライブラリ
 import matplotlib.pyplot as plt  #グラフ化ライブラリ
 from datetime import datetime  #タイムスタンプを実行するライブラリ
 
-
-# In[3]:
-
-
 timestamp = datetime.today() #現在の日付、現在の時刻、ここでは測定開始時刻
 print(timestamp)
-
-
-# In[4]:
 
 
 def ReadWavFile(FileName = "test2.wav"):
@@ -76,10 +58,6 @@ def ReadWavFile(FileName = "test2.wav"):
     
     plt.tight_layout()
     plt.show()
-
-
-# In[5]:
-
 
 if __name__ is "__main__":
     ReadWavFile()       
