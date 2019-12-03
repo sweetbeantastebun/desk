@@ -1,14 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 # -*- coding: utf-8 -*-
-
-
-# In[2]:
-
 
 import numpy as np  #配列計算、FFT化するライブラリ
 import wave     #wavファイルの読み書きするライブラリ
@@ -16,22 +6,10 @@ import pyaudio  #録音機能を使うためのライブラリ
 import matplotlib.pyplot as plt  #グラフ化ライブラリ
 from datetime import datetime  #タイムスタンプを実行するライブラリ
 
-
-# In[3]:
-
-
 timestamp = datetime.today()  #現在の日付、現在の時刻、ここでは測定開始時刻
 print(timestamp)
 
-
-# In[4]:
-
-
 wavFilename = datetime.today().strftime("%Y%m%d-%H%M%S") + ".wav"  #wavファイル名前を定義
-
-
-# In[5]:
-
 
 def MakeWavFile(FileName = wavFilename, Record_Seconds = 2, save = True):
     #録音して（WAVファイル作成）、波形表示
@@ -82,16 +60,8 @@ def MakeWavFile(FileName = wavFilename, Record_Seconds = 2, save = True):
         wavFile.writeframes(b"".join(all)) 
         wavFile.close()
 
-
-# In[6]:
-
-
 if __name__ is "__main__":
     MakeWavFile()    
-
-
-# In[7]:
-
 
 def ReadWavFile(FileName = wavFilename):
     #wavファイルを読み込み、高速フーリエ変換（FFT）
@@ -145,23 +115,13 @@ def ReadWavFile(FileName = wavFilename):
     plt.tight_layout()  #グラフの位置やサイズが自動で調整されて、出力画像からのはみ出しを抑えることができるコード。
     plt.show()
 
-
-# In[8]:
-
-
 if __name__ is "__main__":   
     ReadWavFile() 
 
 
-# In[ ]:
-
-
-
-
-
-# In[9]:
-
-
+    
+    
+    
 #g = np.frombuffer(g, dtype="int16") / float(2**15)
 #frombuffer(x, dtype="int16")は、xを2バイト単位のデータが並んでいるバイナリデータとみなして、1次元配列にする。
 #符号付2バイトなので、各要素の値は、-32768～32767 になります。
@@ -172,4 +132,3 @@ if __name__ is "__main__":
 #(2)は numpy では、「ndarray / 数値」で、「ndarray内の各要素を数値で割る」という処理を表現できます。
 #このため -32768～32767 の値を 32768で割るため、各要素が -1以上1未満のfloat な ndarray になります。
 #正規化
-
