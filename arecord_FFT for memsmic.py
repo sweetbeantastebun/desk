@@ -4,8 +4,8 @@ timestamp = datetime.today()
 #print(timestamp)
 #ファイルの名前をタイムスタンプ化する
 filename = str(timestamp.month) + str(timestamp.day) + str(timestamp.hour) + str(timestamp.minute) + str(timestamp.second)
-#録音実行（32ビット、44.1kHz、2秒）
-record = 'arecord -d 2 -f S32_LE -r 44100 /home/pi/Documents/admp441_data/'+filename+'.wav'
+#録音実行（16ビット、44.1kHz、2秒）
+record = 'arecord -d 2 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename+'.wav'
 subprocess.call(record, shell=True)
 
 import numpy as np #配列計算、FFT化するライブラリ
@@ -25,7 +25,7 @@ def ReadWavFile():
     g = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
     #オーディオフレームの値を読み込んで、バイトごとに文字に変換して文字列
     #録音したデータを配列に変換
-    g = np.frombuffer(g, dtype='int32') / float(2**31)
+    g = np.frombuffer(g, dtype='int16') / float(2**15)
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。
     #時間信号をCSVファイルに出力
     #np.savetxt(timestamp.strftime('%Y%m%d-%H%M%S-g'), g, fmt='%.5f')
