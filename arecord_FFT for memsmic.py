@@ -33,7 +33,7 @@ def ReadWavFile():
     N = 32768  #サンプル数
     n0 = 0  #サンプリング開始位置
     F = np.fft.fft(g[n0:n0+N])  #高速フーリエ変換
-    amp = [np.sqrt(c.real**2 +c.imag**2) for c in F]  #振幅スペクトル
+    amp = [np.sqrt(c.real**2 +c.imag**2) for c in F]  #振幅スペクトル(c.real:実数部分を取り出し。c.imag:虚数部分を取り出し）
     flist = np.fft.fftfreq(N,d=1.0/fs)  #周波数リスト
     #周波数信号をCSVファイルに出力.整数表示
     #np.savetxt("sample2.csv", flist, fmt='%.1f')
