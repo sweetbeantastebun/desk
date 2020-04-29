@@ -38,7 +38,7 @@ def FFT_A():
     global wavfile_A
     t2 = time.time()
     #wavファイルの読み込み
-    wavfile_A = '/home/pi/Documents/admp441_data/'+filename_A+'.wav'
+    wavfile_A = path + filename_A+'.wav'
     wr = wave.open(wavfile_A, "r")  #wavファイルの読み込み。ファイル開く。オブジェクト化。
     fs = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
@@ -115,7 +115,7 @@ def FFT_B():
     global wavfile_B
     t10 = time.time()
     #wavファイルの読み込み
-    wavfile_B = '/home/pi/Documents/admp441_data/'+filename_B+'.wav'
+    wavfile_B = path + filename_B+'.wav'
     wr = wave.open(wavfile_B, "r")  #wavファイルの読み込み。ファイル開く。オブジェクト化。
     fs = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
