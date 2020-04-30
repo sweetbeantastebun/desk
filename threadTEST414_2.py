@@ -5,9 +5,6 @@ import numpy as np #配列計算、FFT化するライブラリ
 import wave  #wavファイルの読み書きするライブラリ
 import csv  #csvを作成するライブラリ
 import os  #ファイルやディレクトリをパス操作するライブラリ
-#import matplotlib
-#matplotlib.use('TkAgg')
-#matplotlib.use('Agg')
 import matplotlib.pyplot as plt  #グラフを作成するライブラリ
 from datetime import datetime  #タイムスタンプを実行するライブラリ
 from threading import Thread  #スレッド処理するライブラリ
@@ -38,7 +35,7 @@ def FFT_A():
     global wavfile_A
     t2 = time.time()
     #wavファイルの読み込み
-    wavfile_A = path + filename_A+'.wav'
+    wavfile_A = path + filename_A + '.wav'
     wr = wave.open(wavfile_A, "r")  #wavファイルの読み込み。ファイル開く。オブジェクト化。
     fs = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
@@ -48,7 +45,6 @@ def FFT_A():
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。
     #print('samples',len(samples))
     t3 = time.time()
-    #t4 = time.time()
     #スペクトルをプロット表示
     spectrum_A = np.fft.fft(samples)  #2次元配列(実部，虚部)
     frequency_A = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
@@ -75,7 +71,6 @@ def FFT_A():
     #plt.grid(which="both")
     #plt.xlabel("freqency(Hz)", fontsize=12)
     #plt.ylabel("Amplitude Spectrum", fontsize=12)
-
     #ax3 = fig.add_subplot(2, 2, 4)
     #plt.plot(frequency_A, np.abs(spectrum_A))
     #plt.xlim(0, 10000)
@@ -83,11 +78,10 @@ def FFT_A():
     #plt.xlabel("freqency(Hz)", fontsize=12)
     #plt.savefig('/home/pi/Documents/admp441_data/Graph.png')
     plt.draw()
-    plt.pause(1)
-    #plt.close()
+    plt.pause(0.1)
     #print('/home/pi/Documents/admp441_data/'+filename_A+'.png', 'saved')
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'spectrum', np.abs(spectrum_A), delimiter = " ", fmt='%.2f')
-    #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'frequency', frequency_A, delimiter = " ", fmt='%.2f')
+    #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'frequency', frequency_A, delimiter = " ", fmt='%.2f')    
     
     #wavファイル削除
     file = filename_A + '.wav'
@@ -115,7 +109,7 @@ def FFT_B():
     global wavfile_B
     t10 = time.time()
     #wavファイルの読み込み
-    wavfile_B = path + filename_B+'.wav'
+    wavfile_B = path + filename_B + '.wav'
     wr = wave.open(wavfile_B, "r")  #wavファイルの読み込み。ファイル開く。オブジェクト化。
     fs = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
@@ -125,7 +119,6 @@ def FFT_B():
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。
     #print('samples',len(samples))
     t11 = time.time()
-    #t12 = time.time()
     #スペクトルをプロット表示
     spectrum_B = np.fft.fft(samples)  #2次元配列(実部，虚部)
     frequency_B = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
@@ -133,11 +126,8 @@ def FFT_B():
     frequency_B = frequency_B[:int(frequency_B.shape[0]/2 + 1)]    #周波数がマイナスになる周波数要素の削除
     #t13 = time.time()
     #グラフ作成
-    print('グラフ作成タスク開始')
     plt.ion()
-    print('plt.ion完了')
     plt.clf()
-    print('plt.clf完了')
     #fig = plt.figure(figsize=(10,10),dpi=100)
     #ax1 = fig.add_subplot(2, 1, 1)
     plt.plot(frequency_B, np.abs(spectrum_B))
@@ -155,18 +145,14 @@ def FFT_B():
     #plt.grid(which="both")
     #plt.xlabel("freqency(Hz)", fontsize=12)
     #plt.ylabel("Amplitude Spectrum", fontsize=12)
-    print('グラフ作成完了')
     #ax3 = fig.add_subplot(2, 2, 4)
     #plt.plot(frequency_B, np.abs(spectrum_B))
     #plt.xlim(0, 10000)
     #plt.ylim(0, 10000000)
     #plt.xlabel("freqency(Hz)", fontsize=12)
     #plt.savefig('/home/pi/Documents/admp441_data/Graph.png')
-    print('plgファイルをディレクトリに保存完了')
     plt.draw()
-    plt.pause(1)
-    #plt.close()
-    print('グラフタスク終了')
+    plt.pause(0.1)
     #print('/home/pi/Documents/admp441_data/'+filename_B+'.png', 'saved')
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_B+'spectrum', np.abs(spectrum_B), delimiter = " ", fmt='%.2f')
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_B+'frequency', frequency_B, delimiter = " ", fmt='%.2f')
