@@ -82,7 +82,7 @@ def FFT_A():
     #plt.xlabel("freqency(Hz)", fontsize=12)
     plt.savefig('/home/pi/Documents/admp441_data/Graph.png')
     plt.draw()
-    plt.pause(1)
+    plt.pause(0.1)
     #plt.close()
     #print('/home/pi/Documents/admp441_data/'+filename_A+'.png', 'saved')
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'spectrum', np.abs(spectrum_A), delimiter = " ", fmt='%.2f')
