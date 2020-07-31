@@ -78,7 +78,7 @@ def FFT_A():
     plt.yticks(fontsize = 9)
     plt.subplot(2, 1, 2)
     #ax2 = fig.add_subplot(2, 1, 2)
-    plt.plot(frequency_A, np.abs(spectrum_A))
+    plt.plot(frequency_A2, np.abs(spectrum_A2))
     plt.xlim(0, 1000)
     plt.ylim(0, 100)
     plt.grid(which="both")
@@ -168,7 +168,7 @@ def FFT_B():
     plt.xticks(fontsize = 9)
     plt.yticks(fontsize = 9)
     plt.subplot(2, 1, 2)
-    plt.plot(frequency_B, np.abs(spectrum_B))
+    plt.plot(frequency_B2, np.abs(spectrum_B2))
     plt.xlim(0, 1000)
     plt.ylim(0, 100)
     plt.subplots_adjust(wspace=0.3, hspace=0.3)  #隣接グラフとの隙間
