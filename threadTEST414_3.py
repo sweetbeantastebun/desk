@@ -46,32 +46,46 @@ def FFT_A():
     #print('samples',len(samples))
     t3 = time.time()
     #t4 = time.time()
-    #スペクトルをプロット表示
-    spectrum_A = np.fft.fft(samples)  #2次元配列(実部，虚部)
-    frequency_A = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
-    spectrum_A = spectrum_A[:int(spectrum_A.shape[0]/2 + 1)]    #スペクトルがマイナスになるスペクトル要素の削除
-    frequency_A = frequency_A[:int(frequency_A.shape[0]/2 + 1)]    #周波数がマイナスになる周波数要素の削除
+    #FFT1
+    N = 32768  #録音2秒で周波数分解能は1.3Hz,16384(2.5Hz)
+    spectrum_A1 = np.fft.fft(samples[0:N])  #2次元配列(実部，虚部)
+    frequency_A1 = np.fft.fftfreq(N, 1.0/fs)  #周波数軸の計算
+    #spectrum_A1 = np.fft.fft(samples)  #2次元配列(実部，虚部)
+    #frequency_A1 = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
+    #FFT2
+    N = 8192  #録音2秒で周波数分解能は5Hz,4096(10Hz)
+    spectrum_A2 = np.fft.fft(samples[0:N])  #2次元配列(実部，虚部)
+    frequency_A2 = np.fft.fftfreq(N, 1.0/fs)  #周波数軸の計算
+    #グラフ作成準備
+    spectrum_A1 = spectrum_A1[:int(spectrum_A1.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
+    spectrum_A2 = spectrum_A2[:int(spectrum_A2.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
+    frequency_A1 = frequency_A1[:int(frequency_A1.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除
+    frequency_A2 = frequency_A2[:int(frequency_A2.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除
     #t5 = time.time()
     #グラフ作成
     plt.ion()
     plt.clf()
     plt.subplot(2, 1, 1)
-    plt.plot(frequency_A, np.abs(spectrum_A))
+    plt.plot(frequency_A1, np.abs(spectrum_A1))
     plt.axis([0,fs/2,0,100])
     plt.grid(which="both")
 #    plt.xscale("log")
 #    plt.yscale("log")
 #    plt.axis([0,fs/2,0,10000])
-    plt.xlabel("freqency(Hz)", fontsize=10)
-    plt.ylabel("Amplitude Spectrum", fontsize=10)
+    plt.xlabel("freqency(Hz)", fontsize=8)
+    plt.ylabel("Amplitude Spectrum", fontsize=8)
+    plt.xticks(fontsize = 9)
+    plt.yticks(fontsize = 9)
     plt.subplot(2, 1, 2)
     #ax2 = fig.add_subplot(2, 1, 2)
     plt.plot(frequency_A, np.abs(spectrum_A))
     plt.xlim(0, 1000)
     plt.ylim(0, 100)
     plt.grid(which="both")
-    plt.xlabel("freqency(Hz)", fontsize=10)
-    plt.ylabel("Amplitude Spectrum", fontsize=10)
+    plt.xlabel("freqency(Hz)", fontsize=8)
+    plt.ylabel("Amplitude Spectrum", fontsize=8)
+    plt.xticks(fontsize = 9)
+    plt.yticks(fontsize = 9)
 
     #plt.subplot(2, 1, 3)
     #plt.plot(frequency_A, np.abs(spectrum_A))
@@ -122,32 +136,47 @@ def FFT_B():
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。
     #print('samples',len(samples))
     t11 = time.time()
-    #t12 = time.time()
-    #スペクトルをプロット表示
-    spectrum_B = np.fft.fft(samples)  #2次元配列(実部，虚部)
-    frequency_B = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
-    spectrum_B = spectrum_B[:int(spectrum_B.shape[0]/2 + 1)]    #スペクトルがマイナスになるスペクトル要素の削除
-    frequency_B = frequency_B[:int(frequency_B.shape[0]/2 + 1)]    #周波数がマイナスになる周波数要素の削除
+    #FFT1
+    N = 32768  #録音2秒で周波数分解能は1.3Hz,16384(2.5Hz)
+    spectrum_B1 = np.fft.fft(samples[0:N])  #2次元配列(実部，虚部)
+    frequency_B1 = np.fft.fftfreq(N, 1.0/fs)  #周波数軸の計算
+    #spectrum_B1 = np.fft.fft(samples)  #2次元配列(実部，虚部)
+    #frequency_B1 = np.fft.fftfreq(samples.shape[0], 1.0/fs)  #周波数軸の計算
+    #FFT2
+    N = 8192  #録音2秒で周波数分解能は5Hz,4096(10Hz)
+    spectrum_B2 = np.fft.fft(samples[0:N])  #2次元配列(実部，虚部)
+    frequency_B2 = np.fft.fftfreq(N, 1.0/fs)  #周波数軸の計算
+    #グラフ作成準備
+    spectrum_B1 = spectrum_B1[:int(spectrum_B1.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
+    spectrum_B2 = spectrum_B2[:int(spectrum_B2.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
+    frequency_B1 = frequency_B1[:int(frequency_B1.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除
+    frequency_B2 = frequency_B2[:int(frequency_B2.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除
     #t13 = time.time()
+    
     #グラフ作成
     plt.ion()
     plt.clf()
     plt.subplot(2, 1, 1)
-    plt.plot(frequency_B, np.abs(spectrum_B))
+    plt.plot(frequency_B1, np.abs(spectrum_B1))
     plt.axis([0,fs/2,0,100])
     plt.grid(which="both")
 #    plt.xscale("log")
 #    plt.yscale("log")
 #    plt.axis([0,fs/2,0,10000])
-    plt.xlabel("freqency(Hz)", fontsize=10)
-    plt.ylabel("Amplitude Spectrum", fontsize=10)
+    plt.xlabel("freqency(Hz)", fontsize=8)
+    plt.ylabel("Amplitude Spectrum", fontsize=8)
+    plt.xticks(fontsize = 9)
+    plt.yticks(fontsize = 9)
     plt.subplot(2, 1, 2)
     plt.plot(frequency_B, np.abs(spectrum_B))
     plt.xlim(0, 1000)
     plt.ylim(0, 100)
+    plt.subplots_adjust(wspace=0.3, hspace=0.3)  #隣接グラフとの隙間
     plt.grid(which="both")
-    plt.xlabel("freqency(Hz)", fontsize=10)
-    plt.ylabel("Amplitude Spectrum", fontsize=10)
+    plt.xlabel("freqency(Hz)", fontsize=8)
+    plt.ylabel("Amplitude Spectrum", fontsize=8)
+    plt.xticks(fontsize = 9)
+    plt.yticks(fontsize = 9)
 
     #plt.subplot(2, 1, 3)
     #plt.plot(frequency_B, np.abs(spectrum_B))
@@ -198,14 +227,14 @@ while True:
     #print('FFT_A',t7-t2)
     #print('FFT_B',t14-t10)
     #memory使用率を出力
-    memory = psutil.virtual_memory()
-    print('memory.percent',memory.percent)
+    #memory = psutil.virtual_memory()
+    #print('memory.percent',memory.percent)
     #cpu使用率を出力
-    cpu = psutil.cpu_percent(interval=1)
+    #cpu = psutil.cpu_percent(interval=1)
     print('cpu',cpu)
     #diskの容量を出力
-    disk = psutil.disk_usage('/')
-    print('disk.percent',disk.percent)
+    #disk = psutil.disk_usage('/')
+    #print('disk.percent',disk.percent)
 #    index_loop += 1
 
 #except KeyboardInterrupt:
