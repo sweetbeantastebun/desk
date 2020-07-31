@@ -231,7 +231,7 @@ while True:
     #print('memory.percent',memory.percent)
     #cpu使用率を出力
     #cpu = psutil.cpu_percent(interval=1)
-    print('cpu',cpu)
+    #print('cpu',cpu)
     #diskの容量を出力
     #disk = psutil.disk_usage('/')
     #print('disk.percent',disk.percent)
