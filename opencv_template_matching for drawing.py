@@ -46,7 +46,7 @@ def Matching():
     t2 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv.imread(path + ".png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path + ".png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path + "*.png")
     for TEMP_File in Template_File:
