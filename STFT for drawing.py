@@ -199,6 +199,6 @@ def Drawing():
             plt.close()
             t13 = time.time()
 Drawing()
-
+print("finish")
 #except KeyboardInterrupt:
 #print("FINISH!")
