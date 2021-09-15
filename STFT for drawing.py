@@ -141,7 +141,7 @@ def Drawing():
             
             #8000Hz
             plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
-            plt.ylim([0, 4000])
+            plt.ylim([4000, 8000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
             plt.yticks([])
@@ -156,7 +156,7 @@ def Drawing():
             
             #12000Hz
             plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
-            plt.ylim([0, 4000])
+            plt.ylim([8000, 12000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
             plt.yticks([])
@@ -171,7 +171,7 @@ def Drawing():
             
             #16000Hz
             plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
-            plt.ylim([0, 4000])
+            plt.ylim([12000, 16000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
             plt.yticks([])
@@ -186,7 +186,7 @@ def Drawing():
             
             #20000Hz
             plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
-            plt.ylim([0, 4000])
+            plt.ylim([16000, 20000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
             plt.yticks([])
