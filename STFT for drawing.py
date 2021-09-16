@@ -102,7 +102,7 @@ def Drawing():
         
             #グラフ作成
             #FullScall
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             """
             #plt.ylim([0, 1000])
             plt.ylim([0, framerate/2])
