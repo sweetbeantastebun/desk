@@ -26,8 +26,8 @@ threshold_value_MIN = 0.005
 #FFT検出強度のフィルタリング
 noise_reduction_filters = 0
 #カラーバーのレンジ指定
-vmin = -300
-vmax = 200
+vmin = -6
+vmax = 6
 
 t00 = time.time()
 path = "/home/pi/Documents/admp441_data/"  #ディレクトリ先を変数pathに格納(データの格納先デレクトリを読み出すときに使用する)
@@ -125,7 +125,7 @@ def Drawing():
             t8 = time.time()
             
             #4000Hz
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             plt.ylim([0, 4000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
@@ -140,7 +140,7 @@ def Drawing():
             t9 = time.time()
             
             #8000Hz
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             plt.ylim([4000, 8000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
@@ -155,7 +155,7 @@ def Drawing():
             t10 = time.time()
             
             #12000Hz
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             plt.ylim([8000, 12000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
@@ -170,7 +170,7 @@ def Drawing():
             t11 = time.time()
             
             #16000Hz
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             plt.ylim([12000, 16000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
@@ -185,7 +185,7 @@ def Drawing():
             t12 = time.time()
             
             #20000Hz
-            plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
+            plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             plt.ylim([16000, 20000])
             #軸ラベル表示無しにするコマンド
             plt.xticks([])
