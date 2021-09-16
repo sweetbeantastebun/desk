@@ -50,7 +50,7 @@ def Matching():
     img_DFT = cv2.imread(path + ".png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path + "*.png")
-    for TEMP_File in Template_File:
+    for TEMP_File in natsorted(Template_File):
         img_TEMP = cv2.imread(TEMP_File)
         
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
