@@ -24,7 +24,7 @@ def recording_A():
     timestamp = datetime.today()
     filename_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + str(timestamp.minute) + "_" + str(timestamp.second) + "." + str(timestamp.microsecond)
     #録音実行（16ビット量子化、44.1kHz）
-    record = 'arecord -d 2 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename_A+'.wav'
+    record = 'arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename_A+'.wav'
     subprocess.call(record, shell=True)
     t1 = time.time()
 
@@ -115,7 +115,7 @@ def recording_B():
     timestamp = datetime.today()
     filename_B = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + str(timestamp.minute) + "_" + str(timestamp.second) + "." + str(timestamp.microsecond)        
     #録音実行（16ビット量子化、44.1kHz)
-    record = 'arecord -d 2 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename_B+'.wav'
+    record = 'arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename_B+'.wav'
     subprocess.call(record, shell=True)
     t9 = time.time()
 
