@@ -27,12 +27,12 @@ vmax = 6
 t00 = time.time()
 path = "/home/pi/Documents/admp441_data/"  #ディレクトリ先を変数pathに格納(データの格納先デレクトリを読み出すときに使用する)
 path2 ="/home/pi/Documents/admp441_data/Save_wavfile/"
-path_FS = "/home/pi/Documents/admp441_data/Save_data/FS/"
-path4000Hz = "/home/pi/Documents/admp441_data/Save_data/4000Hz/"
-path8000Hz = "/home/pi/Documents/admp441_data/Save_data/8000Hz/"
-path12000Hz = "/home/pi/Documents/admp441_data/Save_data/12000Hz/"
-path16000Hz = "/home/pi/Documents/admp441_data/Save_data/16000Hz/"
-path20000Hz = "/home/pi/Documents/admp441_data/Save_data/20000Hz/"
+path_FS = "/home/pi/Documents/admp441_data/FFT_data/FS/"
+path4000Hz = "/home/pi/Documents/admp441_data/FFT_data/4000Hz/"
+path8000Hz = "/home/pi/Documents/admp441_data/FFT_data/8000Hz/"
+path12000Hz = "/home/pi/Documents/admp441_data/FFT_data/12000Hz/"
+path16000Hz = "/home/pi/Documents/admp441_data/FFT_data/16000Hz/"
+path20000Hz = "/home/pi/Documents/admp441_data/FFT_data/20000Hz/"
 
 def Drawing():
     global t0
