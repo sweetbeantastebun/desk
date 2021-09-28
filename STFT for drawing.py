@@ -60,7 +60,7 @@ def Drawing():
     global Sx
     t2 = time.time()
     File_List = glob.glob(path + "*.wav")
-    for audiofile in File_List:
+    for audiofile in natsorted(File_List):
         wavfile_A = audiofile
         wr = wave.open(wavfile_A, "r")  #wavファイルの読み込み。ファイル開く。オブジェクト化。
         fs_A = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
@@ -206,7 +206,14 @@ def Drawing():
             shutil.move(out_path_20000Hz, path20000Hz)
             t13 = time.time()
             
-            
+            #ファイル名、類似度を格納
+            RESULT = [wavfile_A,round(rms_A,3)]
+            #csv
+            with open(path + filename_A + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerows([RESULT])
+            t14 = time.time()
+
 Drawing()
 print("finish")
 #except KeyboardInterrupt:
