@@ -207,7 +207,7 @@ def Drawing():
             t13 = time.time()
             
             #ファイル名、類似度を格納
-            RESULT = [wavfile_A,round(rms_A,3)]
+            RESULT = [name, round(rms_A,3)]
             #csv
             with open(path + filename_A + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
