@@ -16,7 +16,7 @@ import shutil  #ファイル、ディレクトリの移動、コピーするラ�
 import glob  #複数のファイルを選択するライブラリ
 import pandas as  pd  #数式、配列を操作するライブラリ
 import psutil  #メモリ、CPUの使用率をモニターするライブラリ
-from natsort import natsorted
+from natsort import natsorted  #数字の順番に並べ替えるライブラリ（自然順アルゴリズム）
 
 #FFT検出強度のフィルタリング
 noise_reduction_filters = 0
@@ -205,6 +205,8 @@ def Drawing():
             plt.close()
             shutil.move(out_path_20000Hz, path20000Hz)
             t13 = time.time()
+            
+            
 Drawing()
 print("finish")
 #except KeyboardInterrupt:
