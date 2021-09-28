@@ -16,13 +16,8 @@ import shutil  #ファイル、ディレクトリの移動、コピーするラ�
 import glob  #複数のファイルを選択するライブラリ
 import pandas as  pd  #数式、配列を操作するライブラリ
 import psutil  #メモリ、CPUの使用率をモニターするライブラリ
+from natsort import natsorted
 
-#グラフのリアルタイムプロットの更新時間数
-Loop_count_Value1 = 5
-Loop_count_Value2 = 10
-#しきい値を指定
-threshold_value_MAX = 0.13
-threshold_value_MIN = 0.005
 #FFT検出強度のフィルタリング
 noise_reduction_filters = 0
 #カラーバーのレンジ指定
