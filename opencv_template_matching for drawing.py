@@ -16,27 +16,16 @@ import pandas as  pd  #数式、配列を操作するライブラリ
 import cv2  #画像処理ライブラリ
 from natsort import natsorted  #数字の順番に並べ替えるライブラリ（自然順アルゴリズム）
 
-#グラフのリアルタイムプロットの更新時間数
-Loop_count_Value1 = 5
-Loop_count_Value2 = 10
-#しきい値を指定
-threshold_value_MAX = 0.13
-threshold_value_MIN = 0.005
-#FFT検出強度のフィルタリング
-noise_reduction_filters = 0
-#カラーバーのレンジ指定
-vmin = -300
-vmax = 200
 
 t00 = time.time()
 path = "/home/pi/Documents/admp441_data/"  #ディレクトリ先を変数pathに格納(データの格納先デレクトリを読み出すときに使用する)
 path2 ="/home/pi/Documents/admp441_data/Save_wavfile/"
-path_FS = "/home/pi/Documents/admp441_data/Save_data/FS/"
-path4000Hz = "/home/pi/Documents/admp441_data/Save_data/4000Hz/"
-path8000Hz = "/home/pi/Documents/admp441_data/Save_data/8000Hz/"
-path12000Hz = "/home/pi/Documents/admp441_data/Save_data/12000Hz/"
-path16000Hz = "/home/pi/Documents/admp441_data/Save_data/16000Hz/"
-path20000Hz = "/home/pi/Documents/admp441_data/Save_data/20000Hz/"
+path_FS = "/home/pi/Documents/admp441_data/FFT_data/FS/"
+path4000Hz = "/home/pi/Documents/admp441_data/FFT_data/4000Hz/"
+path8000Hz = "/home/pi/Documents/admp441_data/FFT_data/8000Hz/"
+path12000Hz = "/home/pi/Documents/admp441_data/FFT_data/12000Hz/"
+path16000Hz = "/home/pi/Documents/admp441_data/FFT_data/16000Hz/"
+path20000Hz = "/home/pi/Documents/admp441_data/FFT_data/20000Hz/"
 
 
 def Matching_FS():
@@ -53,12 +42,11 @@ def Matching_FS():
     t2 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path_FS + "NT43_pump1_20210114.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path_FS + "/ReferenceData/" + "NT43_pump1_20210114.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path_FS + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)       
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -72,6 +60,8 @@ def Matching_FS():
         with open(path + csvFileName_A + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t3 = time.time()
 
 
@@ -89,12 +79,11 @@ def Matching_4000Hz():
     t12 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path4000Hz + "NT43_pump1_20210114_4000Hz.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path4000Hz + "/ReferenceData/" + "NT43_pump1_20210114_4000Hz.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path4000Hz + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)       
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -108,6 +97,8 @@ def Matching_4000Hz():
         with open(path + csvFileName_A + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t13 = time.time()
 
 
@@ -125,12 +116,11 @@ def Matching_8000Hz():
     t22 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path8000Hz + "NT43_pump1_20210114_8000Hz.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path8000Hz + "/ReferenceData/" + "NT43_pump1_20210114_8000Hz.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path8000Hz + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)     
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -144,6 +134,8 @@ def Matching_8000Hz():
         with open(path + csvFileName_A + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t23 = time.time()
 
 
@@ -161,12 +153,11 @@ def Matching_12000Hz():
     t32 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path12000Hz + "NT43_pump1_20210114_12000Hz.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path12000Hz + "/ReferenceData/" + "NT43_pump1_20210114_12000Hz.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path12000Hz + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)      
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -180,6 +171,8 @@ def Matching_12000Hz():
         with open(path + csvFileName_A + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t33 = time.time()
 
 
@@ -197,12 +190,11 @@ def Matching_16000Hz():
     t42 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path16000Hz + "NT43_pump1_20210114_16000Hz.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path16000Hz + "/ReferenceData/" + "NT43_pump1_20210114_16000Hz.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path16000Hz + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)        
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -216,6 +208,8 @@ def Matching_16000Hz():
         with open(path + csvFileName_A + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t43 = time.time()
 
 
@@ -233,12 +227,11 @@ def Matching_20000Hz():
     t52 = time.time()
     #画像の読み込み
     #デフォルト画像の読み込み
-    img_DFT = cv2.imread(path20000Hz + "NT43_pump1_20210114_20000Hz.png")  #""の中にファイル名を入力
+    img_DFT = cv2.imread(path20000Hz + "/ReferenceData/" + "NT43_pump1_20210114_20000Hz.png")  #""の中にファイル名を入力
     #テンプレート画像の読み込み
     Template_File = glob.glob(path20000Hz + "*.png")
     for TEMP_File in natsorted(Template_File):
-        img_TEMP = cv2.imread(TEMP_File)
-        
+        img_TEMP = cv2.imread(TEMP_File)       
         #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
         method =cv2.TM_CCOEFF_NORMED
         #テンプレートマッチング算出
@@ -252,6 +245,8 @@ def Matching_20000Hz():
         with open(path + csvFileName_A + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
+        #pngファイル削除
+        os.remove(TEMP_File)
         t53 = time.time()
 
 Matching_FS()
